@@ -1,7 +1,0 @@
-require "chibineko/rspec/version"
-
-module Chibineko
-  module Rspec
-    # Your code goes here...
-  end
-end
