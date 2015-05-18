@@ -5,7 +5,7 @@ require 'chibineko/rspec/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "chibineko-rspec"
-  spec.version       = Chibineko::Rspec::VERSION
+  spec.version       = Chibineko::RSpec::VERSION
   spec.authors       = ["Kousuke TANIGUCHI"]
   spec.email         = ["kousuke.taniguchi@gmail.com"]
 
