@@ -22,28 +22,30 @@ Or install it yourself as:
 
 ## Usage
 
-### Automatically inclusion.
+### Set up
 
-1. Sign up chibineko and create test-case.
-2. Set up in RSpec.configure
+add following in spec_helper.rb
 
+```
 
-```ruby spec_helper.rb
 RSpec.configure do |c|
   c.extend Chibineko::RSpec::Helper
 end
+
 ```
 
+### Automatically inclusion.
 
-You write rspec like following.
+1. Sign up chibineko and create test-case.
+2. You write rspec like following and run `rspec`
 
-```ruby spec/chibineko_spec.rb
+```
+
 RSpec.describe "release spec"  do
   includes_chibineko("https://chibineko.jp/t/_pzoN-sPUk7xDy42Mq-4_Q")
 end
-```
 
-3. Run `rspec`
+```
 
 
 `includes_chibineko` downloads csv and generate examples in current example-group.
