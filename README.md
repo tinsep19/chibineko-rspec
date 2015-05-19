@@ -13,7 +13,8 @@ gem 'chibineko-rspec'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
+
 
 Or install it yourself as:
 
@@ -21,60 +22,31 @@ Or install it yourself as:
 
 ## Usage
 
-### Automatically
+### Automatically inclusion.
 
 1. Sign up chibineko and create test-case.
-2. You write rspec like following.
+2. Set up in RSpec.configure
 
 
 ```ruby spec_helper.rb
-
 RSpec.configure do |c|
-  c.include Chibineko::RSpec::Helper
+  c.extend Chibineko::RSpec::Helper
 end
-Chibineko.download_dir = File.expand_file_name(__FILE__, '../../download')
-
 ```
 
 
-```ruby
+You write rspec like following.
 
+```ruby spec/chibineko_spec.rb
 RSpec.describe "release spec"  do
   includes_chibineko("https://chibineko.jp/t/_pzoN-sPUk7xDy42Mq-4_Q")
 end
-
 ```
 
 3. Run `rspec`
 
 
-`includes_chibineko` downloads csv into `Chibineko.download_dir` with named #{id}-#{timestamp}.csv. and generate examples, example-groups, in current example-group.
-
-### Pull Request Based Process
-
-1. `chibineko-rspec gen -o spec/chibineko_spec.rb ID_OR_URL`
-
-ID_OR_URL expect for format https://chibineko.jp/t/_pzoN-sPUk7xDy42Mq-4_Q or _pzoN-sPUk7xDy42Mq-4_Q
-
-`chibineko-rspec gen` generates like following.
-
-
-```ruby
-
-RSpec.describe "_pzoN-sPUk7xDy42Mq-4_Q" do
-  describe "group1" do
-    describe "example1" do
-      it { shold be_ok }
-    end
-    describe "example2" do
-	  it { shold be_ok}
-    end
-  end
-end
-
-```
-
-2. Run `rspec`
+`includes_chibineko` downloads csv and generate examples in current example-group.
 
 ## Development
 
