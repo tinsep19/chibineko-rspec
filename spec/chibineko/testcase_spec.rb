@@ -1,18 +1,33 @@
 require "spec_helper"
 RSpec.describe Chibineko::TestCase do
-  ID_OR_URL = ["https://chibineko.jp/t/_op4xxVZqT-8KMd4S6FTgw", "_op4xxVZqT-8KMd4S6FTgw" ]
-  # describe "#initialize" do
-  #   subject { described_class.new(id_or_url) }
-  #   shared_example ".new" do
-  #   end
-  #   ID_OR_URL.each do |id_or_url|
-  #     it_behaves_like ".new" do
-  #       let(:id_or_url) { id_or_url }
-  #     end
-  #   end
-  # end
+  it { expect(described_class).to be_a(Class) }
+  it { expect(described_class).to respond_to(:retrieve) }
+  it { expect(described_class).to respond_to(:load_from_file) }
+  let(:testcase_url){ "https://chibineko.jp/t/_op4xxVZqT-8KMd4S6FTgw" }
+  let(:testcase_path){ File.expand_path("../../fixtures/testcase.1.csv",__FILE__) }
 
-  # describe ".to_csv_uri" do
-  #   subject { described_class.to_csv_uri(id_or_url) }
-  # end
+  describe ".retrieve" do
+    subject { described_class.retrieve(testcase_url) }
+    it { expect(subject).to be_a(described_class) }
+    it { expect(subject.items.size).to eq 11 }
+    it { expect(subject.source).to eq testcase_url }
+    it { expect(subject.items.sample.source).to eq testcase_url }
+  end
+
+  describe ".load_from_local" do
+    subject { described_class.load_from_file(testcase_path) }
+    it { expect(subject).to be_a(described_class) }
+    it { expect(subject.items.size).to eq 11 }
+    it { expect(subject.source).to eq testcase_path }
+    it { expect(subject.items.sample.source).to eq testcase_path }
+  end
+
+  describe ".new" do
+    subject { described_class.new(File.read(testcase_path),testcase_path) }
+    it { expect(subject).to be_a(described_class) }
+    it { expect(subject.items.size).to eq 11 }
+    it { expect(subject.source).to eq testcase_path }
+    it { expect(subject.items.sample.source).to eq testcase_path }
+  end
+
 end

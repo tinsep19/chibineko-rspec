@@ -48,7 +48,7 @@ end
 ```
 
 
-`includes_chibineko` downloads csv and generate examples in current example-group.
+`includes_chibineko` will download csv and generate examples in current example-group.
 
 ## Development
 
