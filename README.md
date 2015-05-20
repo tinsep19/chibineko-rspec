@@ -28,6 +28,7 @@ add following in spec_helper.rb
 
 ```
 
+require "chibineko/rspec"
 RSpec.configure do |c|
   c.extend Chibineko::RSpec::Helper
 end
