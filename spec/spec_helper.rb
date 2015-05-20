@@ -1,12 +1,8 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'simplecov'
 require 'coveralls'
+Coveralls.wear!
 
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-SimpleCov.start do
-  add_filter 'vendor/bundle'
-end
 
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'chibineko/rspec'
 require 'rspec/its'
 
