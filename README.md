@@ -13,7 +13,7 @@ chibinekoの開発者による開発の背景、サービスの説明
 http://qiita.com/tabbyz/items/6513e84f319843c316d5
 
 
-chibineko-rspecはこの人手による確認と、RSpecによる自動化されたテストおよび、CIのサイクルを統合することを目的にしています。
+chibineko-rspecはRSpecによる自動化されたテストとchibinekoによる人手による確認とをRSpec上に統合し、人手がかかる部分もCIのサイクルに組み込むことを目的にしています。
 
 ## インストール
 
