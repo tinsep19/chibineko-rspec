@@ -1,7 +1,9 @@
 language: ruby
+cache: bundler
 rvm:
   - 2.1.5
 before_install:
   - gem update --system
   - gem --version
   - gem update bundler
+script: 'bundle exec rake'
