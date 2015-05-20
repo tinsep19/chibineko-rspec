@@ -7,10 +7,11 @@ module Chibineko
         content = Net::HTTP.get(uri)
         # Content-Type: text/csv; charset=utf-8
         # But some japanese charactors was not read.
-        new(content.encode("UTF-8","UTF-8"), testcase_url) 
+        new(content.encode("UTF-8", "UTF-8"), testcase_url) 
       end
       def load_from_file(file_path)
-        new(File.read(file_path),File.expand_path(file_path))
+        content = File.read(file_path, encoding: "UTF-8")
+        new(content,File.expand_path(file_path))
       end
     end
     attr_accessor :items, :source

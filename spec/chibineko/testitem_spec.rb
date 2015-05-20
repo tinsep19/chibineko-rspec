@@ -24,7 +24,7 @@ RSpec.describe Chibineko::TestItem do
     it { expect(subject.ng?).to be_truthy }
   end
   describe "pending?" do
-    before { subject.status = "保留中"}
+    before { subject.status = "保留"}
     it { expect(subject.pending?).to be_truthy }
   end
   describe "skip?" do

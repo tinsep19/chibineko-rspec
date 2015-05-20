@@ -17,7 +17,7 @@ module Chibineko
       self.item= row.field(-3)
       self.groups= GROUP_DEPTH.times.map {|offset|
         group = row.field('-', offset)
-        group.nil? or group.empty? ? nil : group
+        (group.nil? or group.empty?) ? nil : group
       }
       self.source= src
       self.line=line_num
