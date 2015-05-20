@@ -84,22 +84,15 @@ chibineko/rspec
 Finished in 0.01376 seconds (files took 3.73 seconds to load)
 5 examples, 3 failures, 1 pending
 
-Failed examples:
-
-rspec ./spec/integration_spec.rb:2 # chibineko/rspec ログイン機能 ログイン時のプログレスインジケーターの回転が綺麗なこと
-rspec ./spec/integration_spec.rb:2 # chibineko/rspec 機種変更 機種変した際にデータが引き継がれること
-rspec ./spec/integration_spec.rb:2 # chibineko/rspec 機種変更 変更前の端末 変更後の端末で再登録したのでこの端末では操作できないことを伝える
 ```
 
 ## 動作概要
 
-chibinekoのCSVのダウンロード機能を使用し、
-CSVをパースして動的にExampleGroup, Exampleを追加していきます。
-
+chibinekoのCSVのダウンロード機能を使用し、CSVの内容から動的にExampleGroup, Exampleを追加していきます。
 その際、ヘッダ部分はExampleGroupとしてグループ化され、項目がExampleへと変換されます。
 chibinekoでのテスト結果はそれぞれ、次のように変換されます。
 - OK、NG、未実施
-  - `it 項目 do ; expect(testcase).to be_ok; end`
+  - `it 項目 do ; expect(testcase).to be_ok; end` be_okはテスト結果がOKの場合のみ成功します。
 - 保留中 
   - `it 項目 do ; pending ; end`
 - 対象外
