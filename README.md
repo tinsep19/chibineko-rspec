@@ -11,9 +11,6 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 Add this line to your application's Gemfile:
 
-''Now, this is not published yet.''
-
-
 ```ruby
 gem 'chibineko-rspec'
 ```
@@ -42,7 +39,7 @@ end
 
 ```
 
-### Automatically inclusion.
+### include_chibineko.
 
 1. Sign up chibineko and create test-case.
 2. You write rspec like following and run `rspec`
