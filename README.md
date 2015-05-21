@@ -86,6 +86,9 @@ Finished in 0.01376 seconds (files took 3.73 seconds to load)
 
 ```
 
+[元のテストケース](https://chibineko.jp/t/FBguDcDQCiOI8MigD936BA)と比較してみてください
+
+
 ## 動作概要
 
 chibinekoのCSVのダウンロード機能を使用し、CSVの内容から動的にExampleGroup, Exampleを追加していきます。
