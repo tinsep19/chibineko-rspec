@@ -3,11 +3,13 @@ require "csv"
 
 module Chibineko
   class TestItem
-    STATUS_OK=["OK"]
-    STATUS_PENDING=["保留"]
-    STATUS_FAIL=["NG","未実施"]
-    STATUS_SKIP=["対象外"]
     GROUP_DEPTH=5
+
+    STATUS_OK=["OK","Passed"]
+    STATUS_PENDING=["保留","Deferred"]
+    STATUS_FAIL=["NG","Failed"]
+    STATUS_NOT_EXEC = ["未実施","Not started"]
+    STATUS_SKIP=["対象外","N/A"]
 
     attr_accessor :groups, :item, :status, :memo, :source, :line
     

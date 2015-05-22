@@ -1,0 +1,6 @@
+"-","Cases","Result","Note"
+"Login Function","A user logs in successfully as a valid user","Not started",""
+"Login Function","A user fails to log in as an invalid user","Passed",""
+"Login Function","A user logs in successfully as a facebook user","Failed",""
+"Login Function","A user logs in successfully as a twitter user","Deferred",""
+"Login Function","A user logs in successfully as a github user","N/A",""
