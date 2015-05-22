@@ -1,4 +1,7 @@
 # coding: utf-8
+require "spec_helper"
+
+
 RSpec.describe Chibineko::TestItem do
   HEADERS = ["-","-","-","-","","",""]
   it { expect(described_class).to be_a(Class) }
@@ -37,8 +40,8 @@ RSpec.describe Chibineko::TestItem do
     include_examples "ok?", "Passed", true 
     include_examples "ng?", "NG", true 
     include_examples "ng?", "Failed", true 
-    include_examples "ng?", "未実施", true
-    include_examples "ng?", "Not started", true
+    include_examples "ng?", "未実施", false
+    include_examples "ng?", "Not started", false
     include_examples "pending?", "保留", true
     include_examples "pending?", "Deferred", true
     include_examples "skip?", "対象外", true
@@ -47,5 +50,8 @@ RSpec.describe Chibineko::TestItem do
     include_examples "execute?", "NG", true
     include_examples "execute?", "Passed", true
     include_examples "execute?", "Failed", true
+    include_examples "execute?", "未実施", false
+    include_examples "execute?", "Not started", false
+
   end
 end

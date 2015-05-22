@@ -23,11 +23,14 @@ RSpec.describe Chibineko::TestCase do
   end
 
   describe ".new" do
-    subject { described_class.new(File.read(testcase_path,encoding: "UTF-8"),testcase_path) }
+    subject do
+      data = File.read(testcase_path, encoding: "UTF-8")
+      described_class.new(data, testcase_path)
+    end
+    
     it { expect(subject).to be_a(described_class) }
     it { expect(subject.items.size).to eq 11 }
     it { expect(subject.source).to eq testcase_path }
     it { expect(subject.items.sample.source).to eq testcase_path }
   end
-
 end
