@@ -7,16 +7,10 @@ RSpec::Matchers.define :be_ok do
   end
 
   description do 
-    "should be complete."
+    "should be passed."
   end
-
+  
   failure_message do |actual|
-    if actual.execute?
-      # NG
-      "expected that #{actual.item} should be completed."
-    else
-      # 未実施
-      "expected that #{actual.item} should be executed."
-    end
+    "expected that #{actual.item} should be passed."
   end
 end
