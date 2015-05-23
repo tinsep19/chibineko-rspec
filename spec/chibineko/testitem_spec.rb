@@ -4,13 +4,13 @@ require "spec_helper"
 
 RSpec.describe Chibineko::TestItem do
   HEADERS = ["-","-","-","-","","",""]
-  it { expect(described_class).to be_a(Class) }
   subject { described_class.new(row, "http://www.example.com",1) }
   let(:row) do
     data = ['group1', 'group2', 'group3', nil, "item", "OK", "memo"]
     CSV::Row.new(HEADERS, data)
   end
 
+  it { expect(described_class).to be_a(Class) }  
   its(:memo) { should eq "memo" }
   its(:item) { should eq "item" }
   its(:status) { should eq "OK" }
@@ -23,14 +23,11 @@ RSpec.describe Chibineko::TestItem do
   end
 
   [:ok?, :ng?, :pending?, :skip?, :execute?].each do |m|
-    shared_examples "#{m}" do |lit, b|
-      it "#{m} returns #{b} when #status is \"#{lit}\"" do
+    shared_examples "#{m}" do |lit, truthy_or_falsy|
+      it "#{m} returns #{truthy_or_falsy} when #status is \"#{lit}\"" do
         subject.status = lit
-        if b
-          expect(subject.send(m)).to(be_truthy)
-        else
-          expect(subject.send(m)).to(be_falsy)
-        end
+        matcher = truthy_or_falsy ? be_truthy : be_falsy
+        expect(subject.send(m)).to(matcher)
       end
     end
   end
