@@ -25,7 +25,6 @@ module Chibineko
         }
       end
       def create_example(parent, item)
-        
         if item.pending?
           parent.it "#{item.item}" do
             pending(item.memo)
@@ -35,8 +34,7 @@ module Chibineko
             expect(item).to be_ok            
           end
         else
-          parent.it "#{item.item}" do |ex|
-            # TODO 専用のMatcherつくろう
+          parent.it "#{item.item}" do 
             expect(item).to be_ok
           end
         end
