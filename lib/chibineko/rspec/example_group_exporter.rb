@@ -12,14 +12,14 @@ module Chibineko
         exporter = self
         items.group_by {|item|
           item.groups[depth]
-        }.each {|group,items|
+        }.each {|group,nested_case|
           if group
             parent.describe "#{group}" do
-              exporter.export(self, items, depth + 1)
+              exporter.export(self, nested_case, depth + 1)
             end
           else
-            items.each do |item|
-              create_example(parent,item)
+            nested_case.each do |item|
+              create_example(parent, item)
             end
           end
         }
