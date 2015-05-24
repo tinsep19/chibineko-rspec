@@ -14,7 +14,7 @@ RSpec.describe Chibineko::TestCase do
     it { expect(subject.items.sample.source).to eq testcase_url }
   end
 
-  describe ".load_from_local" do
+  describe ".load_from_file" do
     subject { described_class.load_from_file(testcase_path) }
     it { expect(subject).to be_a(described_class) }
     it { expect(subject.items.size).to eq 11 }
