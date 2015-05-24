@@ -9,20 +9,40 @@ RSpec.describe Chibineko::RSpec::ExampleGroupExporter do
     testcase
   }
   
-  # describe "#export is recureve " do
-  #   it { expect(subject.export).not_to raise_error }
-  # end
+  describe "#export is recureve " do
+    it "create example group following groups" do
+      parent = double("parent").as_null_object
+      items = 3.times.map do |i|
+        item = double("item#{i}")
+        groups = Array.new(5,nil)
+        groups[0..2] = 3.times.map {|j| "group_#{j}"}
+        allow(item).to receive(:groups) { groups }
+        item
+      end
+      
+      expect(parent).to receive(:describe) do |desc, &block|
+        expect(subject).to receive(:export)
+        parent.instance_eval(&block)
+      end
+      
+      expect{ subject.export(parent,items) }.not_to raise_error
+    end
+  end
 
   describe "#create_example" do
     it "make it / pending example when item is pending" do
       parent = double('parent').as_null_object
       item = double('item').as_null_object
       allow(item).to receive(:pending?) { true }
-      expect(parent).to receive(:it) do |desc, &block|
-        parent.instance_eval(&block)
+      allow(item).to receive(:item) { "item_name" }
+      allow(item).to receive(:memo) { "item_memo" }
+      
+      allow(parent).to receive(:it) do |desc, &block|
+        itc = double('it_context')
+        expect(itc).to receive(:pending).with("item_memo")
+        itc.instance_eval(&block)
       end
-      expect(parent).to receive(:pending)
-
+      
       expect { subject.create_example(parent,item) }.not_to raise_error
     end
 
